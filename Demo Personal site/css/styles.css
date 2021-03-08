@@ -13,7 +13,11 @@ hr {
 }
 
 img{
+    width: 100px;
     height: 100px;
+    /* background-color: #3825e6; */
+    border-radius:50%;
+    box-shadow: 0 0 5px 5px grey;
 }
 
 h1 {

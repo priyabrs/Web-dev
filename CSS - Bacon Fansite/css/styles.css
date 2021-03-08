@@ -1,0 +1,38 @@
+/***************TAG SELECTORS******************/
+
+h1 {
+    font-family: Century Gothic;
+    color: royalblue;
+    /* height: 50px;
+    width: 50px; */
+    font-size: 50px;
+    text-shadow: 0 0 7px #ff0000;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img:hover {
+    background-color: yellow;
+    box-shadow: 10px 10px 5px grey;
+}
+
+/***************CLASS SELECTORS******************/
+
+.bacon {
+    /* box-shadow: 10px 10px 5px grey; */
+    height: 100px;
+    width: 100px;
+}
+
+.broccoli {
+    background-color: #ff0000;
+    height: 100px;
+    width: 100px;
+}
+
+/***************ID SELECTORS******************/
+#head1 {
+    color: aqua;
+}
