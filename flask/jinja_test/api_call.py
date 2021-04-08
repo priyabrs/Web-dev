@@ -17,4 +17,6 @@ def blog():
     response = requests.get('https://api.npoint.io/5cb4231037a3aebb3a2c')
     return response.json()
 # guess_gender('Andy')
-# blog()
+if __name__ == '__main__':
+    response = blog()
+    print(response[0])
