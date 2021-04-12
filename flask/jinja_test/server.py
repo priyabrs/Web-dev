@@ -17,5 +17,11 @@ def page(name):
     guessed_gender = api_call.guess_gender(name)
     return render_template('guess.html', name=name, age=guessed_age, gender=guessed_gender)
 
+@app.route('/blog')
+def get_blog():
+    all_posts = api_call.blog()
+    return render_template('blog.html', posts=all_posts)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
