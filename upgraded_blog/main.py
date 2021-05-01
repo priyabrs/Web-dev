@@ -1,7 +1,12 @@
 
-from flask import Flask, render_template
-import requests
+from flask import Flask, render_template, request
+# import requests
 from data import API_DATA
+import smtplib,ssl
+
+GMAIL_SMTP_SERVER = "smtp.gmail.com"
+PORT = 465
+context = ssl.create_default_context() # CREATES A SECURE SSL CONTEXT
 
 app = Flask(__name__)
 
@@ -18,6 +23,25 @@ def get_about():
 @app.route('/contact.html')
 def get_contact():
     return render_template("contact.html")
+
+@app.route('/contact', methods=['POST', 'GET'])
+def post_contact():
+# def contact():
+    if request.method == "POST":
+        data = request.form
+        data = request.form
+        send_email(data["name"], data["email"], data["phone"], data["message"])
+        return render_template("contact.html", msg_sent=True)
+    return render_template("contact.html", msg_sent=False)
+
+
+def send_email(name, email, phone, message):
+    email_message = f"Subject:New Message from Form\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage:{message}"
+    with smtplib.SMTP_SSL(GMAIL_SMTP_SERVER, PORT, context=context) as server:
+            server.login(EMAIL, PASSWORD)
+            server.sendmail(from_addr=GMAIL_SMTP_SERVER, to_addrs=EMAIL, msg=message)
+    
+    # return render_template("contact.html")
 
 @app.route('/post/<int:index>')
 def show_post(index):
